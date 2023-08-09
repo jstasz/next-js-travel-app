@@ -3,6 +3,7 @@ import styles from "./TravelsList.module.css";
 
 function TravelList(props) {
   return (
+    <>
     <ul className={styles.travels}>
       {props.travels.map(travel =>
         <TravelItem
@@ -13,9 +14,12 @@ function TravelList(props) {
           imageUrl={travel.imageUrl}
           placesToVisit={travel.address}
           food={travel.food}
+          restaurant={travel.restaurant}
         />
       )}
     </ul>
+    </>
+   
   );
 }
 

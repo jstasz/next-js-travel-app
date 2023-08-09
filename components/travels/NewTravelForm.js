@@ -9,6 +9,7 @@ function NewTravelForm(props) {
   const imageUrlRef = useRef();
   const placeToVisitRef = useRef();
   const foodRef = useRef();
+  const restaurantRef = useRef();
 
   function submitHandler(event) {
     event.preventDefault();
@@ -18,13 +19,15 @@ function NewTravelForm(props) {
     const enteredImageUrl = imageUrlRef.current.value;
     const enteredPlaceToVisit = placeToVisitRef.current.value;
     const enteredFood = foodRef.current.value;
+    const enteredRestaurant = restaurantRef.current.value;
 
     const travelData = {
       city: enteredCity,
       country: enteredCountry,
       imageUrl: enteredImageUrl,
       placesToVisit: enteredPlaceToVisit,
-      food: enteredFood
+      food: enteredFood,
+      restaurant: enteredRestaurant
     };
 
     props.onAddTravel(travelData);
@@ -32,7 +35,7 @@ function NewTravelForm(props) {
 
   return (
     <>
-    <h2 className='page-title'>New travel</h2>
+    <h2 className='page-title'>add your new travel</h2>
     <Card className={styles["new-travel-card"]}>
       <form className={styles["new-travel-form"]} onSubmit={submitHandler}>
         <div className={styles["form-control"]}>
@@ -53,12 +56,15 @@ function NewTravelForm(props) {
             type="text"
             id="placeToVisit"
             ref={placeToVisitRef}
-            required
           />
         </div>
         <div className={styles["form-control"]}>
           <label htmlFor="food">food</label>
-          <input type="text" id="food" ref={foodRef} required />
+          <input type="text" id="food" ref={foodRef} />
+        </div>
+        <div className={styles["form-control"]}>
+          <label htmlFor="restaurant">restaurant</label>
+          <input type="text" id="restaurant" ref={restaurantRef} />
         </div>
           <Button className={styles['add-button']}>
             <span className="material-symbols-outlined">add_task</span>

@@ -7,7 +7,6 @@ function MainNav() {
       <p className={styles["title"]}>
         plan your <span className={styles["title-color"]}>travel</span>
       </p>
-      {/* <div> */}
       <nav className={styles["main-nav"]}>
         <ul className={styles["nav-items"]}>
           <li className={styles["nav-item"]}>
@@ -18,7 +17,6 @@ function MainNav() {
           </li>
         </ul>
       </nav>
-      {/* </div> */}
     </header>
   );
 }

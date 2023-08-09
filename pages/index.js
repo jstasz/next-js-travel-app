@@ -8,7 +8,8 @@ const DUMMY_TRAVELS = [
     imageUrl:
       "https://media.istockphoto.com/id/539115110/photo/colosseum-in-rome-and-morning-sun-italy.jpg?s=612x612&w=0&k=20&c=9NtFxHI3P2IBWRY9t0NrfPZPR4iusHmVLbXg2Cjv9Fs=",
     placeToVisit: "Coloseum",
-    food: "Pasta"
+    food: "Pasta",
+    restaurant: "Restaurant 1"
   },
   {
     id: "t2",
@@ -17,7 +18,8 @@ const DUMMY_TRAVELS = [
     imageUrl:
       "https://t3.gstatic.com/licensed-image?q=tbn:ANd9GcQ4um2CsRv2nZUB3M6c_D0Q8a6uUpNyPPWrvrdzVRC_7qD4K6qR0VGMlR34zw1tzePH",
     placeToVisit: "Hassana II Mosque",
-    food: "Tajine"
+    food: "Tajine",
+    restaurant: "Restaurant 2"
   }
 ];
 

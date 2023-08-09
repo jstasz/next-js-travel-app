@@ -1,13 +1,13 @@
 .new-travel-card {
-  margin: 1em;
-  padding: 2em 1em;
+  margin: 1em auto;
+  padding: 3em 2em;
+  max-width: 800px;
 }
 
 .new-travel-form .form-control {
   display: flex;
   flex-direction: column;
   padding: 0.5em;
-  font-size: 1.4rem;
   color: rgb(104, 104, 104);
 }
 
@@ -28,18 +28,18 @@
   font-size: 1.5rem;
 }
 
-@media (min-width: 576px) {
-  .new-travel-card {
-    margin: 1em auto;
-    width: 80%;
+@media (min-width: 768px) {
+  .new-travel-form .form-control,
+  .new-travel-form input {
+    font-size: 1.4rem;
+  }
+
+  .new-travel-form input {
+    padding: 0.5em;
   }
 }
 
-@media (min-width: 768px) {
-  .new-travel-card {
-    width: 60%;
-  }
-
+@media (min-width: 1200px) {
   .new-travel-form .form-control,
   .new-travel-form input {
     font-size: 1.5rem;
@@ -47,29 +47,5 @@
 
   .new-travel-form input {
     padding: 0.6em;
-  }
-}
-
-@media (min-width: 1200px) {
-  .new-travel-card {
-    padding: 2em;
-    width: 45%;
-  }
-
-  .new-travel-form .form-control,
-  .new-travel-form input {
-    font-size: 1.7rem;
-  }
-
-  .new-travel-form input {
-    padding: 0.7em;
-  }
-}
-
-@media (min-width: 1400px) {
-  .new-travel-card {
-    padding: 3em;
-    width: 40%;
-    max-width: 800px;
   }
 }

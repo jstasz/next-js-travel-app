@@ -11,10 +11,10 @@ function TravelItem(props) {
 
   return (
     <li onClick={showDetailsHandler}>
-      <Card className={styles["travel-item"]}>
-        <img className={styles["img"]} src={props.imageUrl} alt={props.city} />
-        <div className={styles["content"]}>
-          <h2 className={styles["city"]}>
+      <Card className={`travel-item ${styles["travel-item"]}`}>
+        <img className="img" src={props.imageUrl} alt={props.city} />
+        <div className="content">
+          <h2 className="city">
             {props.city}
           </h2>
           <p>
