@@ -1,22 +1,20 @@
+import Card from "../ui/Card";
+import styles from "./TravelItem.module.css";
+
 function TravelItem(props) {
   return (
     <li>
-      <div>
-        <div>
-          <img src={props.imageUrl} alt={props.city} />
-        </div>
-        <div>
-          <h3>
+      <Card className={styles["travel-item"]}>
+        <img className={styles["img"]} src={props.imageUrl} alt={props.city} />
+        <div className={styles["content"]}>
+          <h2 className={styles["city"]}>
             {props.city}
-          </h3>
-          <h3>
+          </h2>
+          <p>
             {props.country}
-          </h3>
+          </p>
         </div>
-        <div>
-          <button>Show Details</button>
-        </div>
-      </div>
+      </Card>
     </li>
   );
 }
