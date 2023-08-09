@@ -29,3 +29,24 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.page-title {
+  padding: 1em;
+  width: 100%;
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem;
+  text-align: center;
+  color: rgb(58, 58, 58);
+}
+
+@media (min-width: 768px) {
+  .page-title {
+    font-size: 3.2rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .page-title {
+    font-size: 3.7rem;
+  }
+}
