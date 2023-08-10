@@ -23,8 +23,19 @@ const DUMMY_TRAVELS = [
   }
 ];
 
-function HomePage() {
-  return <TravelList travels={DUMMY_TRAVELS} />;
+function HomePage(props) {
+  return <TravelList travels={props.travels} />;
+}
+
+export async function getStaticProps() {
+  //fetch data from an API
+
+  return {
+    props: {
+      travels: DUMMY_TRAVELS
+    },
+    revalidate: 1
+  };
 }
 
 export default HomePage;
