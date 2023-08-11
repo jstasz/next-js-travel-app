@@ -25,3 +25,33 @@
 .travel-details .to-do .item {
   font-size: 1.5rem;
 }
+
+@media (min-width: 768px) {
+  .travel-details .to-do .item {
+    font-size: 1.6rem;
+  }
+
+  .travel-details .to-do .title {
+    font-size: 1.7rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .travel-details .to-do .item {
+    font-size: 1.7rem;
+  }
+
+  .travel-details .to-do .title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .travel-details .to-do .item {
+    font-size: 1.8rem;
+  }
+
+  .travel-details .to-do .item {
+    font-size: 1.9rem;
+  }
+}
