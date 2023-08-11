@@ -25,7 +25,7 @@ function NewTravelForm(props) {
       city: enteredCity,
       country: enteredCountry,
       imageUrl: enteredImageUrl,
-      placesToVisit: enteredPlaceToVisit,
+      placeToVisit: enteredPlaceToVisit,
       food: enteredFood,
       restaurant: enteredRestaurant
     };

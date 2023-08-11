@@ -1,38 +1,31 @@
+import { MongoClient } from "mongodb";
 import TravelList from "@/components/travels/TravelsList";
-
-const DUMMY_TRAVELS = [
-  {
-    id: "t1",
-    city: "Roma",
-    country: "Italy",
-    imageUrl:
-      "https://media.istockphoto.com/id/539115110/photo/colosseum-in-rome-and-morning-sun-italy.jpg?s=612x612&w=0&k=20&c=9NtFxHI3P2IBWRY9t0NrfPZPR4iusHmVLbXg2Cjv9Fs=",
-    placeToVisit: "Coloseum",
-    food: "Pasta",
-    restaurant: "Restaurant 1"
-  },
-  {
-    id: "t2",
-    city: "Casablanca",
-    country: "Marocco",
-    imageUrl:
-      "https://t3.gstatic.com/licensed-image?q=tbn:ANd9GcQ4um2CsRv2nZUB3M6c_D0Q8a6uUpNyPPWrvrdzVRC_7qD4K6qR0VGMlR34zw1tzePH",
-    placeToVisit: "Hassana II Mosque",
-    food: "Tajine",
-    restaurant: "Restaurant 2"
-  }
-];
 
 function HomePage(props) {
   return <TravelList travels={props.travels} />;
 }
 
 export async function getStaticProps() {
-  //fetch data from an API
+  MongoClient.connect();
+
+  const client = await MongoClient.connect(
+    "mongodb+srv://j_user:Justyna1@cluster0.37vzcx5.mongodb.net/travels?retryWrites=true&w=majority"
+  );
+
+  const db = client.db();
+  const travelsCollection = db.collection("travels");
+  const loadedTravels = await travelsCollection.find().toArray();
+
+  client.close();
 
   return {
     props: {
-      travels: DUMMY_TRAVELS
+      travels: loadedTravels.map(travel => ({
+        city: travel.city,
+        country: travel.country,
+        imageUrl: travel.imageUrl,
+        id: travel._id.toString()
+      }))
     },
     revalidate: 1
   };
