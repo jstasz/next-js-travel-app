@@ -26,6 +26,38 @@
   font-size: 1.5rem;
 }
 
+.remove-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 1em;
+  font-size: 1.2rem;
+}
+
+.remove-btn:hover {
+  background-color: white;
+}
+
+.travel-details .edit {
+  display: flex;
+  justify-content: right;
+}
+
+.travel-details .edit .edit-icon {
+  margin-top: 0.5em;
+  padding: 0.3em;
+  font-size: 1.4rem;
+  background-color: rgb(234, 234, 234);
+  border: 2px solid rgb(226, 155, 40);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.travel-details .edit .edit-icon:hover {
+  color: rgb(226, 155, 40);
+  background-color: white;
+}
+
 @media (min-width: 768px) {
   .travel-details .to-do .item {
     font-size: 1.6rem;
@@ -33,6 +65,14 @@
 
   .travel-details .to-do .title {
     font-size: 1.7rem;
+  }
+
+  .remove-btn {
+    font-size: 1.3rem;
+  }
+
+  .travel-details .edit .edit-icon {
+    font-size: 1.6rem;
   }
 }
 
@@ -44,6 +84,14 @@
   .travel-details .to-do .title {
     font-size: 1.8rem;
   }
+
+  .remove-btn {
+    font-size: 1.4rem;
+  }
+
+  .travel-details .edit .edit-icon {
+    font-size: 1.9rem;
+  }
 }
 
 @media (min-width: 1400px) {
@@ -53,5 +101,13 @@
 
   .travel-details .to-do .item {
     font-size: 1.9rem;
+  }
+
+  .remove-btn {
+    font-size: 1.5rem;
+  }
+
+  .travel-details .edit .edit-icon {
+    font-size: 2.2rem;
   }
 }

@@ -1,3 +1,4 @@
+import Button from "../ui/Button";
 import Card from "../ui/Card";
 import styles from "./TravelDetails.module.css";
 
@@ -15,6 +16,8 @@ function TravelDetails(props) {
             {props.country}
           </p>
         </div>
+        <Button className={styles["remove-btn"]}>Remove Travel</Button>
+        <div />
       </Card>
       <div className={styles["to-do"]}>
         <div className={styles["box"]}>
@@ -24,6 +27,11 @@ function TravelDetails(props) {
           <p className={styles["item"]}>
             {props.placeToVisit}
           </p>
+          <div className={styles["edit"]}>
+            <p className={`material-symbols-outlined ${styles["edit-icon"]}`}>
+              edit
+            </p>
+          </div>
         </div>
         <div className={styles["box"]}>
           <h3 className={styles["title"]}>
@@ -33,6 +41,11 @@ function TravelDetails(props) {
           <p className={styles["item"]}>
             {props.restaurant}
           </p>
+          <div className={styles["edit"]}>
+            <p className={`material-symbols-outlined ${styles["edit-icon"]}`}>
+              edit
+            </p>
+          </div>
         </div>
         <div className={styles["box"]}>
           <h3 className={styles["title"]}>
@@ -41,6 +54,11 @@ function TravelDetails(props) {
           <p className={styles["item"]}>
             {props.food}
           </p>
+          <div className={styles["edit"]}>
+            <p className={`material-symbols-outlined ${styles["edit-icon"]}`}>
+              edit
+            </p>
+          </div>
         </div>
       </div>
     </div>
