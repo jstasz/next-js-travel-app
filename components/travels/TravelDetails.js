@@ -34,6 +34,11 @@ function TravelDetails(props) {
             {props.places &&
               props.places.map(place =>
                 <li className={styles["item"]} key={place}>
+                  <span
+                    className={`material-symbols-outlined ${styles["icon"]}`}
+                  >
+                    fiber_manual_record
+                  </span>
                   {place}
                 </li>
               )}
@@ -48,6 +53,11 @@ function TravelDetails(props) {
             {props.restaurants &&
               props.restaurants.map(restaurant =>
                 <li className={styles["item"]} key={restaurant}>
+                  <span
+                    className={`material-symbols-outlined ${styles["icon"]}`}
+                  >
+                    fiber_manual_record
+                  </span>
                   {restaurant}
                 </li>
               )}
@@ -61,6 +71,11 @@ function TravelDetails(props) {
             {props.foods &&
               props.foods.map(food =>
                 <li className={styles["item"]} key={food}>
+                  <span
+                    className={`material-symbols-outlined ${styles["icon"]}`}
+                  >
+                    fiber_manual_record
+                  </span>
                   {food}
                 </li>
               )}

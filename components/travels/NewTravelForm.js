@@ -4,6 +4,7 @@ import styles from "./NewTravelForm.module.css";
 import Button from "../ui/Button";
 import ListItems from "../ui/ListItems";
 import { useRouter } from "next/router";
+import LoadingSpinner from "../ui/LoadingSpinner";
 
 function NewTravelForm(props) {
   const router = useRouter();
@@ -19,6 +20,8 @@ function NewTravelForm(props) {
   const [places, setPlaces] = useState(props.places || []);
   const [foods, setFoods] = useState(props.foods || []);
   const [restaurants, setRestaurants] = useState(props.restaurants || []);
+
+  const [isLoading, setIsLoading] = useState(false);
 
   function addPlace() {
     placeRef.current.value !== '' ? setPlaces([...places, placeRef.current.value]) : '';
@@ -50,6 +53,8 @@ function NewTravelForm(props) {
   function submitHandler(event) {
     event.preventDefault();
 
+    setIsLoading(true);
+
     const enteredCity = cityRef.current.value;
     const enteredCountry = countryRef.current.value;
     const enteredImageUrl = imageUrlRef.current.value;
@@ -72,6 +77,7 @@ function NewTravelForm(props) {
 
   return (
     <>
+    {isLoading ? <LoadingSpinner /> : <>
     {!editMode && <h2 className='page-title'>add your new travel</h2>}
     {editMode && <h2 className='page-title'>edit your travel to {props.city}</h2>}
     <Card className={styles["new-travel-card"]}>
@@ -127,8 +133,9 @@ function NewTravelForm(props) {
         </Button>
       </form>
     </Card>
-    </>
-  );
+    </>}
+  </>
+);
 }
 
 export default NewTravelForm;

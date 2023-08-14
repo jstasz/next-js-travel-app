@@ -1,5 +1,14 @@
+import styles from "./LoadingSpinner.module.css";
+
 function LoadingSpinner() {
-  return <p>Loading...</p>;
+  return (
+    <div className={styles["lds-ring"]}>
+      <div />
+      <div />
+      <div />
+      <div />
+    </div>
+  );
 }
 
 export default LoadingSpinner;
