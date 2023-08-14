@@ -6,7 +6,7 @@ function TravelDetailsPage(props) {
   const router = useRouter();
 
   async function removeTravelHandler() {
-    const response = await fetch("/api/travel", {
+    const response = await fetch("/api/travel.js", {
       method: "DELETE",
       body: JSON.stringify({ id: props.travelData.id }),
       headers: {
@@ -20,13 +20,13 @@ function TravelDetailsPage(props) {
 
   return (
     <TravelDetails
-      id={props.travelData.id}
-      city={props.travelData.city}
-      country={props.travelData.country}
-      imageUrl={props.travelData.imageUrl}
-      places={props.travelData.places}
-      foods={props.travelData.foods}
-      restaurants={props.travelData.restaurants}
+      id={props.travelData?.id}
+      city={props.travelData?.city}
+      country={props.travelData?.country}
+      imageUrl={props.travelData?.imageUrl}
+      places={props.travelData?.places}
+      foods={props.travelData?.foods}
+      restaurants={props.travelData?.restaurants}
       onRemoveTravel={removeTravelHandler}
     />
   );
@@ -62,8 +62,10 @@ export async function getStaticProps(context) {
   const selectedTravel = await travelsCollection.findOne({
     _id: new ObjectId(travelId)
   });
-
-  console.log(selectedTravel.places);
+  const tempTravelId = travelId;
+  const tempSelectedTravel = selectedTravel;
+  console.log("Temporary Travel ID:", tempTravelId);
+  console.log("Temporary Selected Travel:", tempSelectedTravel);
 
   return {
     props: {
@@ -72,9 +74,9 @@ export async function getStaticProps(context) {
         city: selectedTravel.city,
         country: selectedTravel.country,
         imageUrl: selectedTravel.imageUrl,
-        places: selectedTravel.places || null,
-        foods: selectedTravel.foods || null,
-        restaurants: selectedTravel.restaurants || null
+        places: selectedTravel.places,
+        foods: selectedTravel.foods,
+        restaurants: selectedTravel.restaurants
       }
     }
   };
