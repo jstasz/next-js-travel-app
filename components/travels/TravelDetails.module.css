@@ -23,5 +23,89 @@
 }
 
 .travel-details .to-do .item {
+  display: flex;
+  align-items: center;
+  padding: 0.2em 0;
   font-size: 1.5rem;
+  text-transform: capitalize;
+}
+
+.travel-details .to-do .item .icon {
+  font-size: 0.7rem;
+  margin-right: 0.7em;
+  color: rgb(226, 155, 40);
+  background-color: rgb(226, 155, 40);
+  border-radius: 50%;
+}
+
+.actions-btns {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 0;
+}
+
+.remove-btn,
+.edit-btn {
+  margin: 0.5em 0;
+  width: 60%;
+  font-size: 1.2rem;
+}
+
+.remove-btn:hover,
+.edit-btn:hover {
+  background-color: white;
+}
+
+@media (min-width: 576px) {
+  .remove-btn,
+  .edit-btn {
+    width: 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  .travel-details .to-do .item {
+    font-size: 1.6rem;
+  }
+
+  .travel-details .to-do .title {
+    font-size: 1.7rem;
+  }
+
+  .remove-btn,
+  .edit-btn {
+    font-size: 1.3rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .travel-details .to-do .item {
+    font-size: 1.7rem;
+  }
+
+  .travel-details .to-do .title {
+    font-size: 1.8rem;
+  }
+
+  .remove-btn,
+  .edit-btn {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .travel-details .to-do .item {
+    font-size: 1.8rem;
+  }
+
+  .travel-details .to-do .title {
+    font-size: 1.9rem;
+  }
+
+  .remove-btn,
+  .edit-btn {
+    font-size: 1.7rem;
+  }
 }

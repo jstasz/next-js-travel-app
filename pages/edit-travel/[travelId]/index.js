@@ -1,14 +1,19 @@
+import NewTravelForm from "@/components/travels/NewTravelForm";
 import { MongoClient, ObjectId } from "mongodb";
-import TravelDetails from "@/components/travels/TravelDetails";
 import { useRouter } from "next/router";
 
-function TravelDetailsPage(props) {
+function EditTravelPage(props) {
   const router = useRouter();
 
-  async function removeTravelHandler() {
+  async function editTravelHandler(travelData) {
+    const updatedData = {
+      id: props.travelData.id,
+      updatedTravelData: travelData
+    };
+
     const response = await fetch("/api/travel", {
-      method: "DELETE",
-      body: JSON.stringify({ id: props.travelData.id }),
+      method: "PUT",
+      body: JSON.stringify(updatedData),
       headers: {
         "Content-Type": "application/json"
       }
@@ -19,15 +24,14 @@ function TravelDetailsPage(props) {
   }
 
   return (
-    <TravelDetails
-      id={props.travelData.id}
+    <NewTravelForm
       city={props.travelData.city}
       country={props.travelData.country}
       imageUrl={props.travelData.imageUrl}
       places={props.travelData.places}
       foods={props.travelData.foods}
       restaurants={props.travelData.restaurants}
-      onRemoveTravel={removeTravelHandler}
+      onEditTravel={editTravelHandler}
     />
   );
 }
@@ -63,8 +67,6 @@ export async function getStaticProps(context) {
     _id: new ObjectId(travelId)
   });
 
-  console.log(selectedTravel.places);
-
   return {
     props: {
       travelData: {
@@ -80,4 +82,4 @@ export async function getStaticProps(context) {
   };
 }
 
-export default TravelDetailsPage;
+export default EditTravelPage;

@@ -1,9 +1,20 @@
-import Layout from "@/components/layout/Layout";
 import NewTravelForm from "../../components/travels/NewTravelForm";
+import { useRouter } from "next/router";
 
 function NewTravelPage() {
-  function addTravelHandler(enteredTravelData) {
-    console.log(enteredTravelData);
+  const router = useRouter();
+
+  async function addTravelHandler(enteredTravelData) {
+    const response = await fetch("/api/travel", {
+      method: "POST",
+      body: JSON.stringify(enteredTravelData),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    const data = await response.json();
+    router.push("/");
   }
 
   return <NewTravelForm onAddTravel={addTravelHandler} />;
