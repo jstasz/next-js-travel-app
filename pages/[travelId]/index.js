@@ -15,7 +15,6 @@ function TravelDetailsPage(props) {
     });
 
     const data = await response.json();
-    console.log("Response from server:", data);
     router.push("/");
   }
 
@@ -44,7 +43,7 @@ export async function getStaticPaths() {
   client.close();
 
   return {
-    fallback: false,
+    fallback: true,
     paths: loadedtravels.map(travel => ({
       params: { travelId: travel._id.toString() }
     }))

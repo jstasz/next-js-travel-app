@@ -1,7 +1,8 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Card from "../ui/Card";
 import styles from "./NewTravelForm.module.css";
 import Button from "../ui/Button";
+import ListItems from "../ui/ListItems";
 
 function NewTravelForm(props) {
   const cityRef = useRef();
@@ -10,6 +11,37 @@ function NewTravelForm(props) {
   const placeToVisitRef = useRef();
   const foodRef = useRef();
   const restaurantRef = useRef();
+
+  const [places, setPlaces] = useState([]);
+  const [foods, setFoods] = useState([]);
+  const [restaurants, setRestaurants] = useState([]);
+
+  function addPlace() {
+    placeToVisitRef.current.value !== '' ? setPlaces([...places, placeToVisitRef.current.value]) : '';
+    placeToVisitRef.current.value = '';
+  }
+
+  function addFood() {
+    foodRef.current.value !== '' ? setFoods([...foods, foodRef.current.value]) : '';
+    foodRef.current.value = '';
+  }
+
+  function addRestaurant() {
+    restaurantRef.current.value !== '' ? setRestaurants([...restaurants, restaurantRef.current.value]) : '';
+    restaurantRef.current.value = '';
+  }
+
+  function removePlace(index) {
+    setPlaces(places.filter((_, i) => i !== index));
+  }
+
+  function removeFood(index) {
+    setFoods(foods.filter((_, i) => i !== index));
+  }
+
+  function removeRestaurant(index) {
+    setRestaurants(restaurants.filter((_, i) => i !== index));
+  }
 
   function submitHandler(event) {
     event.preventDefault();
@@ -20,6 +52,7 @@ function NewTravelForm(props) {
     const enteredPlaceToVisit = placeToVisitRef.current.value;
     const enteredFood = foodRef.current.value;
     const enteredRestaurant = restaurantRef.current.value;
+
 
     const travelData = {
       city: enteredCity,
@@ -52,23 +85,41 @@ function NewTravelForm(props) {
         </div>
         <div className={styles["form-control"]}>
           <label htmlFor="placeToVisit">place to visit</label>
+          <div className={styles["add-input"]}>
           <input
             type="text"
             id="placeToVisit"
             ref={placeToVisitRef}
           />
+                    <p className={`material-symbols-outlined ${styles["add-icon"]}`} onClick={addPlace}>
+                    add_circle
+            </p>
+            </div>
         </div>
+        <ListItems list={places} onClick={removePlace}/>
         <div className={styles["form-control"]}>
           <label htmlFor="food">food</label>
-          <input type="text" id="food" ref={foodRef} />
+          <div className={styles["add-input"]}>
+          <input className={styles["short-input"]} type="text" id="food" ref={foodRef} />
+          <p className={`material-symbols-outlined ${styles["add-icon"]}`} onClick={addFood}>
+              add_circle
+            </p>
+            </div>
         </div>
+        <ListItems list={foods} onClick={removeFood}/>
         <div className={styles["form-control"]}>
           <label htmlFor="restaurant">restaurant</label>
-          <input type="text" id="restaurant" ref={restaurantRef} />
+          <div className={styles["add-input"]}>
+          <input className={styles["short-input"]} type="text" id="restaurant" ref={restaurantRef} />
+          <p className={`material-symbols-outlined ${styles["add-icon"]}`} onClick={addRestaurant}>
+          add_circle
+            </p>
+            </div>
         </div>
-          <Button className={styles['add-button']}>
-            <span className="material-symbols-outlined">add_task</span>
-          </Button>
+        <ListItems list={restaurants} onClick={removeRestaurant}/>
+        <Button className={styles['add-button']}>
+          <span className="material-symbols-outlined">add_task</span>
+        </Button>
       </form>
     </Card>
     </>
