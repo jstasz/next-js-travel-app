@@ -20,13 +20,13 @@ function TravelDetailsPage(props) {
 
   return (
     <TravelDetails
-      id={props.travelData?.id}
-      city={props.travelData?.city}
-      country={props.travelData?.country}
-      imageUrl={props.travelData?.imageUrl}
-      places={props.travelData?.places}
-      foods={props.travelData?.foods}
-      restaurants={props.travelData?.restaurants}
+      id={props.travelData.id}
+      city={props.travelData.city}
+      country={props.travelData.country}
+      imageUrl={props.travelData.imageUrl}
+      places={props.travelData.places}
+      foods={props.travelData.foods}
+      restaurants={props.travelData.restaurants}
       onRemoveTravel={removeTravelHandler}
     />
   );
@@ -62,10 +62,6 @@ export async function getStaticProps(context) {
   const selectedTravel = await travelsCollection.findOne({
     _id: new ObjectId(travelId)
   });
-  const tempTravelId = travelId;
-  const tempSelectedTravel = selectedTravel;
-  console.log("Temporary Travel ID:", tempTravelId);
-  console.log("Temporary Selected Travel:", tempSelectedTravel);
 
   return {
     props: {

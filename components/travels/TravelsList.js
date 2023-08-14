@@ -12,9 +12,6 @@ function TravelList(props) {
           city={travel.city}
           country={travel.country}
           imageUrl={travel.imageUrl}
-          places={travel.places}
-          foods={travel.foods}
-          restaurants={travel.restaurants}
         />
       )}
     </ul>

@@ -6,8 +6,6 @@ function HomePage(props) {
 }
 
 export async function getStaticProps() {
-  // MongoClient.connect();
-
   const client = new MongoClient(
     "mongodb+srv://j_user:Justyna1@cluster0.37vzcx5.mongodb.net/travels?retryWrites=true&w=majority",
     {
@@ -21,6 +19,8 @@ export async function getStaticProps() {
   const db = client.db("travels");
   const travelsCollection = db.collection("travels");
   const loadedTravels = await travelsCollection.find().toArray();
+
+  console.log(loadedTravels);
 
   client.close();
 
