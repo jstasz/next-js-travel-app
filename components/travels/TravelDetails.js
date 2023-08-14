@@ -3,6 +3,10 @@ import Card from "../ui/Card";
 import styles from "./TravelDetails.module.css";
 
 function TravelDetails(props) {
+  function removeHandler() {
+    props.onRemoveTravel(props.id);
+  }
+
   return (
     <div className={styles["travel-details"]}>
       <h2 className="page-title">your travel to ...</h2>
@@ -16,7 +20,9 @@ function TravelDetails(props) {
             {props.country}
           </p>
         </div>
-        <Button className={styles["remove-btn"]}>Remove Travel</Button>
+        <Button className={styles["remove-btn"]} onClick={removeHandler}>
+          Remove Travel
+        </Button>
         <div />
       </Card>
       <div className={styles["to-do"]}>

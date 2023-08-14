@@ -1,15 +1,34 @@
 import { MongoClient, ObjectId } from "mongodb";
 import TravelDetails from "@/components/travels/TravelDetails";
+import { useRouter } from "next/router";
 
 function TravelDetailsPage(props) {
+  const router = useRouter();
+
+  async function removeTravelHandler() {
+    const response = await fetch("/api/travel", {
+      method: "DELETE",
+      body: JSON.stringify({ id: props.travelData.id }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    const data = await response.json();
+    console.log("Response from server:", data);
+    router.push("/");
+  }
+
   return (
     <TravelDetails
+      id={props.travelData.id}
       city={props.travelData.city}
       country={props.travelData.country}
       imageUrl={props.travelData.imageUrl}
       placeToVisit={props.travelData.placeToVisit}
       food={props.travelData.food}
       restaurant={props.travelData.restaurant}
+      onRemoveTravel={removeTravelHandler}
     />
   );
 }

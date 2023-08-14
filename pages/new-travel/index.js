@@ -5,7 +5,7 @@ function NewTravelPage() {
   const router = useRouter();
 
   async function addTravelHandler(enteredTravelData) {
-    const response = await fetch("/api/new-travel", {
+    const response = await fetch("/api/travel", {
       method: "POST",
       body: JSON.stringify(enteredTravelData),
       headers: {
