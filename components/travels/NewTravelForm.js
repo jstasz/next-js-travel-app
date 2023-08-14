@@ -3,22 +3,26 @@ import Card from "../ui/Card";
 import styles from "./NewTravelForm.module.css";
 import Button from "../ui/Button";
 import ListItems from "../ui/ListItems";
+import { useRouter } from "next/router";
 
 function NewTravelForm(props) {
+  const router = useRouter();
+  const editMode = router.pathname.includes("edit-travel");
+
   const cityRef = useRef();
   const countryRef = useRef();
   const imageUrlRef = useRef();
-  const placeToVisitRef = useRef();
+  const placeRef = useRef();
   const foodRef = useRef();
   const restaurantRef = useRef();
 
-  const [places, setPlaces] = useState([]);
-  const [foods, setFoods] = useState([]);
-  const [restaurants, setRestaurants] = useState([]);
+  const [places, setPlaces] = useState(props.places || []);
+  const [foods, setFoods] = useState(props.foods || []);
+  const [restaurants, setRestaurants] = useState(props.restaurants || []);
 
   function addPlace() {
-    placeToVisitRef.current.value !== '' ? setPlaces([...places, placeToVisitRef.current.value]) : '';
-    placeToVisitRef.current.value = '';
+    placeRef.current.value !== '' ? setPlaces([...places, placeRef.current.value]) : '';
+    placeRef.current.value = '';
   }
 
   function addFood() {
@@ -49,39 +53,40 @@ function NewTravelForm(props) {
     const enteredCity = cityRef.current.value;
     const enteredCountry = countryRef.current.value;
     const enteredImageUrl = imageUrlRef.current.value;
-    const enteredPlaceToVisit = placeToVisitRef.current.value;
-    const enteredFood = foodRef.current.value;
-    const enteredRestaurant = restaurantRef.current.value;
-
 
     const travelData = {
       city: enteredCity,
       country: enteredCountry,
       imageUrl: enteredImageUrl,
-      placeToVisit: enteredPlaceToVisit,
-      food: enteredFood,
-      restaurant: enteredRestaurant
+      places: places,
+      foods: foods,
+      restaurants: restaurants
     };
 
-    props.onAddTravel(travelData);
+    if(editMode) {
+      props.onEditTravel(travelData)
+    } else {
+      props.onAddTravel(travelData);
+    }
   }
 
   return (
     <>
-    <h2 className='page-title'>add your new travel</h2>
+    {!editMode && <h2 className='page-title'>add your new travel</h2>}
+    {editMode && <h2 className='page-title'>edit your travel to {props.city}</h2>}
     <Card className={styles["new-travel-card"]}>
       <form className={styles["new-travel-form"]} onSubmit={submitHandler}>
         <div className={styles["form-control"]}>
           <label htmlFor="city">city</label>
-          <input type="text" id="city" ref={cityRef} required />
+          <input type="text" id="city" ref={cityRef} defaultValue={props.city} required />
         </div>
         <div className={styles["form-control"]}>
           <label htmlFor="country">country</label>
-          <input type="text" id="country" ref={countryRef} required />
+          <input type="text" id="country" ref={countryRef} defaultValue={props.country} required />
         </div>
         <div className={styles["form-control"]}>
           <label htmlFor="imageUrl">image</label>
-          <input type="url" id="imageUrl" ref={imageUrlRef} required />
+          <input type="url" id="imageUrl" ref={imageUrlRef} defaultValue={props.imageUrl} required />
         </div>
         <div className={styles["form-control"]}>
           <label htmlFor="placeToVisit">place to visit</label>
@@ -89,7 +94,7 @@ function NewTravelForm(props) {
           <input
             type="text"
             id="placeToVisit"
-            ref={placeToVisitRef}
+            ref={placeRef}
           />
                     <p className={`material-symbols-outlined ${styles["add-icon"]}`} onClick={addPlace}>
                     add_circle

@@ -26,36 +26,31 @@
   font-size: 1.5rem;
 }
 
-.remove-btn {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 1em;
+.actions-btns {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 0;
+}
+
+.remove-btn,
+.edit-btn {
+  margin: 0.5em 0;
+  width: 60%;
   font-size: 1.2rem;
 }
 
-.remove-btn:hover {
+.remove-btn:hover,
+.edit-btn:hover {
   background-color: white;
 }
 
-.travel-details .edit {
-  display: flex;
-  justify-content: right;
-}
-
-.travel-details .edit .edit-icon {
-  margin-top: 0.5em;
-  padding: 0.3em;
-  font-size: 1.4rem;
-  background-color: rgb(234, 234, 234);
-  border: 2px solid rgb(226, 155, 40);
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.travel-details .edit .edit-icon:hover {
-  color: rgb(226, 155, 40);
-  background-color: white;
+@media (min-width: 576px) {
+  .remove-btn,
+  .edit-btn {
+    width: 50%;
+  }
 }
 
 @media (min-width: 768px) {
@@ -67,12 +62,9 @@
     font-size: 1.7rem;
   }
 
-  .remove-btn {
+  .remove-btn,
+  .edit-btn {
     font-size: 1.3rem;
-  }
-
-  .travel-details .edit .edit-icon {
-    font-size: 1.6rem;
   }
 }
 
@@ -85,12 +77,9 @@
     font-size: 1.8rem;
   }
 
-  .remove-btn {
+  .remove-btn,
+  .edit-btn {
     font-size: 1.4rem;
-  }
-
-  .travel-details .edit .edit-icon {
-    font-size: 1.9rem;
   }
 }
 
@@ -103,11 +92,8 @@
     font-size: 1.9rem;
   }
 
-  .remove-btn {
-    font-size: 1.5rem;
-  }
-
-  .travel-details .edit .edit-icon {
-    font-size: 2.2rem;
+  .remove-btn,
+  .edit-btn {
+    font-size: 1.7rem;
   }
 }

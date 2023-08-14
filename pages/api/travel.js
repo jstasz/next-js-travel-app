@@ -30,6 +30,20 @@ async function handler(req, res) {
 
     res.status(200).json({ message: "Travel deleted!" });
   }
+
+  if (req.method === "PUT") {
+    const travelId = req.body.id;
+    const updatedTravelData = req.body.updatedTravelData;
+
+    const result = await travelsCollection.updateOne(
+      { _id: new ObjectId(travelId) },
+      { $set: updatedTravelData }
+    );
+
+    client.close();
+
+    res.status(200).json({ message: "Travel updated!" });
+  }
 }
 
 export default handler;

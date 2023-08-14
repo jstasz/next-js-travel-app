@@ -1,8 +1,11 @@
+import { useRouter } from "next/router";
 import Button from "../ui/Button";
 import Card from "../ui/Card";
 import styles from "./TravelDetails.module.css";
 
 function TravelDetails(props) {
+  const router = useRouter();
+
   function removeHandler() {
     props.onRemoveTravel(props.id);
   }
@@ -20,9 +23,6 @@ function TravelDetails(props) {
             {props.country}
           </p>
         </div>
-        <Button className={styles["remove-btn"]} onClick={removeHandler}>
-          Remove Travel
-        </Button>
         <div />
       </Card>
       <div className={styles["to-do"]}>
@@ -30,42 +30,53 @@ function TravelDetails(props) {
           <h3 className={styles["title"]}>
             <span className={styles["title-color"]}>places</span> you must see
           </h3>
-          <p className={styles["item"]}>
-            {props.placeToVisit}
-          </p>
-          <div className={styles["edit"]}>
-            <p className={`material-symbols-outlined ${styles["edit-icon"]}`}>
-              edit
-            </p>
-          </div>
+          <ul>
+            {props.places &&
+              props.places.map(place =>
+                <li className={styles["item"]} key={place}>
+                  {place}
+                </li>
+              )}
+          </ul>
         </div>
         <div className={styles["box"]}>
           <h3 className={styles["title"]}>
             worth visiting{" "}
             <span className={styles["title-color"]}>restaurants</span>
           </h3>
-          <p className={styles["item"]}>
-            {props.restaurant}
-          </p>
-          <div className={styles["edit"]}>
-            <p className={`material-symbols-outlined ${styles["edit-icon"]}`}>
-              edit
-            </p>
-          </div>
+          <ul>
+            {props.restaurants &&
+              props.restaurants.map(restaurant =>
+                <li className={styles["item"]} key={restaurant}>
+                  {restaurant}
+                </li>
+              )}
+          </ul>
         </div>
         <div className={styles["box"]}>
           <h3 className={styles["title"]}>
             <span className={styles["title-color"]}>food</span> you should try
           </h3>
-          <p className={styles["item"]}>
-            {props.food}
-          </p>
-          <div className={styles["edit"]}>
-            <p className={`material-symbols-outlined ${styles["edit-icon"]}`}>
-              edit
-            </p>
-          </div>
+          <ul>
+            {props.foods &&
+              props.foods.map(food =>
+                <li className={styles["item"]} key={food}>
+                  {food}
+                </li>
+              )}
+          </ul>
         </div>
+      </div>
+      <div className={styles["actions-btns"]}>
+        <Button
+          className={styles["edit-btn"]}
+          onClick={() => router.push(`/edit-travel/${props.id}`)}
+        >
+          Edit Travel
+        </Button>
+        <Button className={styles["remove-btn"]} onClick={removeHandler}>
+          Remove Travel
+        </Button>
       </div>
     </div>
   );
