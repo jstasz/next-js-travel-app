@@ -85,7 +85,7 @@ function TravelDetails(props) {
       <div className={styles["actions-btns"]}>
         <Button
           className={styles["edit-btn"]}
-          onClick={() => router.push(`/edit-travel/${props.id}`)}
+          onClick={() => props.id && router.push(`/edit-travel/${props.id}`)}
         >
           Edit Travel
         </Button>

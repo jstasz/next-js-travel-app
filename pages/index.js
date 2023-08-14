@@ -6,13 +6,19 @@ function HomePage(props) {
 }
 
 export async function getStaticProps() {
-  MongoClient.connect();
+  // MongoClient.connect();
 
-  const client = await MongoClient.connect(
-    "mongodb+srv://j_user:Justyna1@cluster0.37vzcx5.mongodb.net/travels?retryWrites=true&w=majority"
+  const client = new MongoClient(
+    "mongodb+srv://j_user:Justyna1@cluster0.37vzcx5.mongodb.net/travels?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    }
   );
 
-  const db = client.db();
+  await client.connect();
+
+  const db = client.db("travels");
   const travelsCollection = db.collection("travels");
   const loadedTravels = await travelsCollection.find().toArray();
 
